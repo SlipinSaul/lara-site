@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use function PHPUnit\Framework\isNull;
-
+//Контроллер корзины
 class BasketController extends Controller
 {
     public function basket()
