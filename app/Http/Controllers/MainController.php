@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Log;
 // Основной контроллер
 class MainController extends Controller
 {
-    public function index(ProductsFilterRequest $request)
+    public function index(ProductsFilterRequest $request) //Lab03 Метод главного контроллера для запроса из БД данных о товарах
     {
 
         $productsQuery = Product::with('category') ;

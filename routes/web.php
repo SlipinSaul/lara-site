@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 
-Route::get('/', [MainController::class, 'index'])->name('index');
+Route::get('/', [MainController::class, 'index'])->name('index'); //Lab03 Маршрут для доступа к главной страницы
 
 
 Route::get('/logout', [LoginController::class, 'logout'])->name('get-logout');

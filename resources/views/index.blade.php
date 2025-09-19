@@ -1,4 +1,4 @@
-@extends('layouts.master')
+@extends('layouts.master') <!-- Lab03 Наследование от вида с шапкой сайта -->
 @section('title', 'Главная')
 @section('content')
 
@@ -36,7 +36,7 @@
     </form>
 
         <div class="row">
-            @foreach($products as $product)
+            @foreach($products as $product) <!-- Lab02 Вывод списка товаров -->
                 @include('layouts.card', compact('product'))
             @endforeach
         </div>

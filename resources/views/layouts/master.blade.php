@@ -1,5 +1,5 @@
 
-<!doctype html>
+<!doctype html> <!-- Lab03 HTML вёрстка шапки сайта -->
 <html lang="en">
 <head>
     <meta charset="utf-8">

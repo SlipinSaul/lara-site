@@ -1,4 +1,4 @@
-<div class="col-sm-6 col-md-4">
+<div class="col-sm-6 col-md-4"> <!-- Lab03 HTML вёрстка карточки товара  -->
     <div class="thumbnail">
         <div class="labels">
             @if($product->isNew())
