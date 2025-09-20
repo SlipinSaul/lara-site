@@ -2,15 +2,15 @@
     <div class="thumbnail">
         <div class="labels">
             @if($product->isNew())
-                <span class="badge badge-success">Новинка</span>
+                <span class="badge badge-success">{{ __('messages.new') }}</span><!-- Lab04 Вывод значение в зависимости от локализации  -->
             @endif
 
             @if($product->isRecommend())
-                <span class="badge badge-warning">Рекомендуем</span>
+                <span class="badge badge-warning">{{ __('messages.recommend') }}</span>
             @endif
 
             @if($product->isHit())
-                <span class="badge badge-danger">Хит продаж</span>
+                <span class="badge badge-danger">{{ __('messages.hit') }}</span>
             @endif
         </div>
         <img src="{{ Storage::url($product->image) }}"  alt="{{ Storage::url('ProductImage.png') }}">
@@ -22,12 +22,12 @@
                 @csrf
                 @if($product->isAvailable())
                     <button type="submit" class="btn btn-primary"
-                            role="button">В корзину</button>
+                            role="button">{{ __('messages.basket_add') }}</button>
                 @else
-                    Не доступен
+                    {{ __('messages.not_available') }}
                 @endif
                 <a href="{{ route('product', [isset($category) ? $category->code: $product->category->code, $product->code]) }}" class="btn btn-default"
-                   role="button">Подробнее</a>
+                   role="button">{{ __('messages.more') }}</a>
                 </form>
             </p>
         </div>

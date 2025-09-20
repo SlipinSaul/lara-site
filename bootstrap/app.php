@@ -25,6 +25,7 @@ return Application::configure(basePath: dirname(__DIR__))
         $middleware->alias([
             'is_admin' => \App\Http\Middleware\CheckIsAdmin::class,
             'basket_not_empty' => \App\Http\Middleware\BasketIsNotEmpty::class,
+            'lang' => \App\Http\Middleware\SetLocale::class
         ]);
     })
     ->withExceptions(function (Exceptions $exceptions): void {

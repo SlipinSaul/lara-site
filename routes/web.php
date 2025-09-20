@@ -10,12 +10,20 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 
-Route::get('/', [MainController::class, 'index'])->name('index'); //Lab03 Маршрут для доступа к главной страницы
 
 
 Route::get('/logout', [LoginController::class, 'logout'])->name('get-logout');
 
-Route::get('/categories', [MainController::class, 'categories'])->name('categories');
+
+
+Route::get('/set-locale/{locale}', function ($locale) { //lab04 Маршрут для смены языка
+    if (!in_array($locale, ['en', 'ru'])) {
+        abort(400);
+    }
+    session(['locale' => $locale]); // сохраняем язык в сессии
+    return redirect()->back();
+})->name('set-locale');
+
 
 Route::group(['prefix'=>'basket'], function(){
     Route::group(['middleware' => 'basket_not_empty'], function () {
@@ -44,14 +52,20 @@ Route::group(['middleware' => 'auth', 'prefix' => 'admin'], function () {
 
 Route::middleware(['auth'])->group(function () {
     Route::group(['prefix'=>'person'], function () {
-        Route::get('/orders', [App\Http\Controllers\Person\OrderController::class, 'index'])->name('person.orders.index');
-        Route::get('/orders/{order}', [App\Http\Controllers\Person\OrderController::class, 'show'])->name('person.orders.show');
+        Route::get('/orders', [\App\Http\Controllers\Person\OrderController::class, 'index'])->name('person.orders.index');
+        Route::get('/orders/{order}', [\App\Http\Controllers\Person\OrderController::class, 'show'])->name('person.orders.show');
     });
 });
 
-Route::get('/{category}', [MainController::class, 'category'])->name('category');
+Route::group(['middleware' => 'lang'], function () { // Lab04 доступ по middleware  маршрутам
+    Route::get('/', [MainController::class, 'index'])->name('index'); //Lab03 Маршрут для доступа к главной страницы
+    Route::get('/categories', [MainController::class, 'categories'])->name('categories');
+    Route::get('/{category}', [MainController::class, 'category'])->name('category');
 
-Route::get('/{category}/{product}', [MainController::class, 'product'])->name('product');
+    Route::get('/{category}/{product}', [MainController::class, 'product'])->name('product');
+});
+
+
 
 
 

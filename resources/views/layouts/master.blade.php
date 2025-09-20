@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Интернет Магазин: @yield('title')</title>
+    <title>{{ __('messages.shop') }}: @yield('title')</title>
 
     <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
     <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
@@ -16,35 +16,39 @@
 <nav class="navbar navbar-inverse navbar-fixed-top">
     <div class="container">
         <div class="navbar-header">
-            <a class="navbar-brand" href="{{route('index')}}">Интернет Магазин</a>
+            <a class="navbar-brand" href="{{route('index')}}">{{ __('messages.shop') }}</a>
         </div>
         <div id="navbar" class="collapse navbar-collapse">
             <ul class="nav navbar-nav">
-                <li  @if(Route::currentRouteNamed('index')) class="active" @endif><a href="{{route('index')}}">Все товары</a></li>
+                <li  @if(Route::currentRouteNamed('index')) class="active" @endif><a href="{{route('index')}}">{{ __('messages.all_products') }}</a></li>
                 <li @if(Route::currentRouteNamed('categor*')) class="active" @endif>
-                    <a href="{{route('categories')}}">Категории</a>
+                    <a href="{{route('categories')}}">{{ __('messages.categories') }}</a>
                 </li>
                 <li @if(Route::currentRouteNamed('basket')) class="active" @endif>
-                    <a href="{{route('basket')}}">В корзину</a>
+                    <a href="{{route('basket')}}">{{ __('messages.basket') }}</a>
                 </li>
                 <li>
-                    <a href="{{route('index')}}">Сбросить проект в начальное состояние</a>
+                    <a href="{{ route('set-locale', ['locale' => 'ru']) }}">RU</a>
                 </li>
+                <li>
+                    <a href="{{ route('set-locale', ['locale' => 'en']) }}">EN</a>
+                </li>
+
             </ul>
 
             <ul class="nav navbar-nav navbar-right">
                 @guest
-                    <li><a href="{{ route('login') }}">Войти</a></li>
+                    <li><a href="{{ route('login') }}">{{ __('messages.login') }}</a></li>
                 @endguest
 
                 @auth
                     @if(Auth::user()->isAdmin())
-                        <li><a href="{{ route('home') }}">Панель администратора</a></li>
+                        <li><a href="{{ route('home') }}">{{ __('messages.admin_panel') }}</a></li>
                     @else
-                        <li><a href="{{ route('person.orders.index') }}">Мои заказы</a></li>
+                        <li><a href="{{ route('person.orders.index') }}">{{ __('messages.my_orders') }}</a></li>
                     @endif
 
-                    <li><a href="{{ route('get-logout') }}">Выйти</a></li>
+                    <li><a href="{{ route('get-logout') }}">{{ __('messages.logout') }}</a></li>
                 @endauth
             </ul>
         </div>
