@@ -12,9 +12,8 @@ class MainController extends Controller
 {
     public function index(ProductsFilterRequest $request) //Lab03 Метод главного контроллера для запроса из БД данных о товарах
     {
-
         $productsQuery = Product::with('category') ;
-        if($request->filled('price_from')) {
+        if($request->filled('price_from')) { // Lab05 обработка get запроса с фильтрами по товарам и соответствующие  запросы к бд в зависимости от фильтров
             $productsQuery->where('price', '>=', $request->price_from);
         }
         if($request->filled('price_to')) {

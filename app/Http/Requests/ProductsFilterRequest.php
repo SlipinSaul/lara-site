@@ -19,7 +19,7 @@ class ProductsFilterRequest extends FormRequest
      *
      * @return array<string, \Illuminate\Contracts\Validation\ValidationRule|array<mixed>|string>
      */
-    public function rules(): array
+    public function rules(): array // Lab05 валидация по полям фильтров
     {
         return [
             'price_from'=>'nullable|numeric|min:0',

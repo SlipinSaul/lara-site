@@ -29,7 +29,7 @@
                 </label>
             </div>
             <div class="col-sm-6 col-md-3">
-                <button type="submit" class="btn btn-primary">{{ __('messages.filter') }}</button>
+                <button type="submit" class="btn btn-primary">{{ __('messages.filter') }}</button> <!-- Lab05 Отправка get запроса на сервер с фильтрами по товарам -->
                 <a href="{{ route("index") }}" class="btn btn-warning">{{ __('messages.reset') }}</a>
             </div>
         </div>
