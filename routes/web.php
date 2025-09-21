@@ -50,7 +50,7 @@ Route::group(['middleware' => 'auth', 'prefix' => 'admin'], function () {
     });
 });
 
-Route::middleware(['auth'])->group(function () {
+Route::middleware(['auth'])->group(function () { //Lab06 middleware только для авторизованных, доступ к некоторым страницам
     Route::group(['prefix'=>'person'], function () {
         Route::get('/orders', [\App\Http\Controllers\Person\OrderController::class, 'index'])->name('person.orders.index');
         Route::get('/orders/{order}', [\App\Http\Controllers\Person\OrderController::class, 'show'])->name('person.orders.show');

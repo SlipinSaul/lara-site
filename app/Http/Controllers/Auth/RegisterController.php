@@ -62,7 +62,7 @@ class RegisterController extends Controller
      * @param  array  $data
      * @return \App\Models\User
      */
-    protected function create(array $data)
+    protected function create(array $data) // Lab06 Метод контроллера для создания пользователя в БД
     {
         return User::create([
             'name' => $data['name'],

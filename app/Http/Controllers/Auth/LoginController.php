@@ -22,7 +22,7 @@ class LoginController extends Controller
 
     use AuthenticatesUsers;
 
-    protected function redirectTo() {
+    protected function redirectTo() { // Lab06 Метод контроллера для входа
         if(Auth::user()->isAdmin()){
             return route('home');
         } else{
@@ -44,8 +44,8 @@ class LoginController extends Controller
     public function __construct()
     {
 
-        $this->middleware('guest')->except('logout');
-        $this->middleware('auth')->only('logout');
+        $this->middleware('guest')->except('logout'); // Lab06 доступ для гостя ко всем маршрутам, кроме выхода
+        $this->middleware('auth')->only('logout'); //Lab06 доступ для авторизованного пользователя только к маршруты для выхода
     }
 
 }

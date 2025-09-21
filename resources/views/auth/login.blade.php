@@ -1,6 +1,6 @@
 @extends('auth.layouts.master')
 
-@section('title', 'Авторизация')
+@section('title', 'Авторизация') <!-- Lab06 страница с авторизацией -->
 
 @section('content')
     <div class="col-md-8">
